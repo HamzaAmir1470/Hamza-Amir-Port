@@ -21,21 +21,6 @@ const Navbar = ({ sectionRefs, resumeUrl }) => {
         }
     };
 
-    // Function to handle Resume Download
-    const handleDownloadResume = () => {
-        if (resumeUrl) {
-            // Create an invisible anchor tag programmatically
-            const link = document.createElement('a');
-            link.href = resumeUrl;
-            link.download = 'Hamza_Amir_Resume.pdf'; // The name the file will download as
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } else {
-            console.warn("Resume URL not provided");
-        }
-    };
-
     return (
         <motion.nav
             initial={{ y: -100, opacity: 0 }}
@@ -71,12 +56,14 @@ const Navbar = ({ sectionRefs, resumeUrl }) => {
                 </div>
 
                 {/* Hire Me / Resume Button */}
-                <button
-                    onClick={handleDownloadResume}
+                <a
+                    href={resumeUrl}
+                    download="Hamza_Amir_CV.pdf"
+                    aria-label="Download Hamza Amir's CV"
                     className="bg-[#2a2a2a] hover:bg-[#3a3a3a] text-white text-sm font-medium px-5 py-2 rounded-lg border border-white/10 transition-all shadow-lg cursor-pointer"
                 >
                     Hire me
-                </button>
+                </a>
             </div>
         </motion.nav>
     );

@@ -33,7 +33,16 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["POST",
 
 
 def tokens(text: str) -> list[str]:
-    return re.findall(r"[a-z0-9]+", text.lower())
+    stop_words = {
+        "a", "about", "am", "an", "and", "are", "can", "do", "does", "for",
+        "hamza", "he", "how", "i", "in", "is", "me", "of", "on", "tell",
+        "the", "this", "to", "what", "which", "who", "with", "you",
+    }
+    return [
+        token
+        for token in re.findall(r"[a-z0-9]+", text.lower())
+        if token not in stop_words
+    ]
 
 
 def hybrid_search(query: str, limit: int = 5) -> list[dict[str, Any]]:
