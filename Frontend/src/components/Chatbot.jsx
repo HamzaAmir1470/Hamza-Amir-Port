@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Bot, MessageCircle, Send, X } from 'lucide-react';
 
 const starterMessage = {
@@ -13,6 +13,13 @@ export default function Chatbot() {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([starterMessage]);
   const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, loading, open]);
 
   async function submit(event) {
     event.preventDefault();
@@ -69,6 +76,7 @@ export default function Chatbot() {
               </div>
             ))}
             {loading && <p className="text-xs text-gray-500">Searching the portfolio...</p>}
+            <div ref={messagesEndRef} />
           </div>
           <form onSubmit={submit} className="flex gap-2 border-t border-white/10 p-3">
             <input value={message} onChange={(event) => setMessage(event.target.value)} maxLength={1000} placeholder="Ask a question..." aria-label="Chat message" className="min-w-0 flex-1 rounded-lg border border-white/10 bg-[#0f0f0f] px-3 py-2 text-sm text-white outline-none placeholder:text-gray-600 focus:border-blue-500" />

@@ -1,12 +1,13 @@
 KNOWLEDGE = [
     (
-        "profile",
+        "Hamza's profile",
         "Hamza Amir is a Software Engineer and Full-Stack Developer based in Lahore, "
         "Pakistan. He is a Computer Science student and specializes in the MERN "
         "stack, cloud infrastructure, DevOps, secure RESTful APIs, responsive web "
         "applications, clean code, maintainability, and open source. Email: "
         "hamzaamir9733@gmail.com. Website: hamzaamir.me. GitHub: "
         "github.com/HamzaAmir1470. LinkedIn: linkedin.com/in/hamza-amir9733.",
+        "Contact Number: +92 3224385445",
     ),
     (
         "frontend-backend-skills",
