@@ -1,0 +1,9 @@
+services:
+  rag-service:
+    build: ./rag-service
+    env_file:
+      - ./rag-service/.env
+    volumes:
+      - ./rag-service/data:/app/data
+    ports:
+      - "8000:8000"
