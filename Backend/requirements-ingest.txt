@@ -1,0 +1,6 @@
+# Optional local-only dependencies for running ingest.py.
+# Do not use this file as the Vercel function dependency file.
+-r requirements.txt
+chromadb==0.6.3
+sentence-transformers==3.3.1
+rank-bm25==0.2.2
